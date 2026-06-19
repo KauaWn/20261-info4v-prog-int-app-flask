@@ -88,11 +88,12 @@
 from app import app
 from flask import render_template, redirect, flash, url_for, session # <-- Importe o 'session'
 from app.forms.login_form import LoginForm
+from app.forms.cadastro import cadastroForm
 from app.controllers.AuthenticationControllers import AuthenticationController
 
 @app.route("/")
 def index():
-    return redirect(url_for('login'))
+    return redirect(url_for('home'))
 
 @app.route("/home")
 def home():
@@ -140,9 +141,9 @@ def login():
 
 @app.route('/cadastro', methods=['GET', 'POST'])
 def cadastro():
-    formulario = LoginForm()
+    formulario = cadastroForm()
     if formulario.validate_on_submit():
-        if AuthenticationController.login(formulario):
+        if AuthenticationController.cadastro(formulario):
              flash("Cadastro efetuado com sucesso!")
              
              # Salva o nome preenchido no formulário dentro da sessão do Flask

@@ -6,3 +6,9 @@ class AuthenticationController:
             form.remember_me.data
         ))
         return True
+    def cadastro(form):
+        print("O usuario {} fez o cadastro, lembrar={}".format(
+            form.username.data,
+            form.remember_me.data
+        ))
+        return True
